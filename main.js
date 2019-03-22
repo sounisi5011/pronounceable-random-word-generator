@@ -38,7 +38,8 @@
     setLengthNode: function(element) {
       return {
         getWordLength: function() {
-          return Number(element.value);
+          var length = Number(element.value);
+          return 1 <= length ? length : 1;
         }
       };
     },
