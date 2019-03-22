@@ -1,8 +1,8 @@
-fieldset p {
+.input-form p {
   margin: 0;
 }
 
-fieldset p + p {
+.input-form p + p {
   margin-top: .1em;
 }
 
