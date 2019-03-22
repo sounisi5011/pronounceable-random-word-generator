@@ -129,7 +129,7 @@
           })
         ])
       ]),
-      state.word !== '' ? h('p', { class: 'output' }, state.word) : null
+      state.word !== '' ? h('p', { class: 'output', translate: 'no' }, state.word) : null
     ]);
   };
 
