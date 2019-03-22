@@ -11,6 +11,21 @@
   var DEFAULT_CONSONANTS_CHARS = 'bcdfghjklmnpqrstvwxyz';
   var DEFAULT_WORD_LENGTH = 5;
 
+  function uniqueChars(str) {
+    var charList = str.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\s\S]/g) || [];
+    return charList
+      .sort(function(a, b) {
+        var len_diff = a.length - b.length;
+        if (len_diff !== 0) {
+          return len_diff;
+        }
+        return a < b ? -1 : b < a ? 1 : 0;
+      })
+      .filter(function(item, index, array) {
+        return index < 1 || item !== array[index - 1];
+      });
+  }
+
   var state = {
     vowelsChars: DEFAULT_VOWELS_CHARS,
     consonantsChars: DEFAULT_CONSONANTS_CHARS,
@@ -24,14 +39,14 @@
     setVowelsNode: function(element) {
       return {
         getVowelsChars: function() {
-          return element.value;
+          return uniqueChars(element.value).join('');
         }
       };
     },
     setConsonantsNode: function(element) {
       return {
         getConsonantsChars: function() {
-          return element.value;
+          return uniqueChars(element.value).join('');
         }
       };
     },
