@@ -68,24 +68,6 @@
     return h('div', {}, [
       h('div', { class: 'input-form' }, [
         h('p', {}, [
-          h('label', { for: 'vowels-input' }, 'Vowels: '),
-          h('input', {
-            type: 'text',
-            id: 'vowels-input',
-            value: state.vowelsChars,
-            oncreate: actions.setVowelsNode
-          })
-        ]),
-        h('p', {}, [
-          h('label', { for: 'consonants-input' }, 'Consonants: '),
-          h('input', {
-            type: 'text',
-            id: 'consonants-input',
-            value: state.consonantsChars,
-            oncreate: actions.setConsonantsNode
-          })
-        ]),
-        h('p', {}, [
           h('label', { for: 'length-input' }, 'Word length: '),
           h('input', {
             type: 'number',
@@ -94,6 +76,27 @@
             min: 1,
             oncreate: actions.setLengthNode
           })
+        ]),
+        h('details', { class: 'chars-option' }, [
+          h('summary', {}, 'Characters option'),
+          h('p', {}, [
+            h('label', { for: 'vowels-input' }, 'Vowels: '),
+            h('input', {
+              type: 'text',
+              id: 'vowels-input',
+              value: state.vowelsChars,
+              oncreate: actions.setVowelsNode
+            })
+          ]),
+          h('p', {}, [
+            h('label', { for: 'consonants-input' }, 'Consonants: '),
+            h('input', {
+              type: 'text',
+              id: 'consonants-input',
+              value: state.consonantsChars,
+              oncreate: actions.setConsonantsNode
+            })
+          ])
         ]),
         h('p', {}, [
           h('input', {
