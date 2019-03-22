@@ -77,8 +77,8 @@
             oncreate: actions.setLengthNode
           })
         ]),
-        h('details', { class: 'chars-option' }, [
-          h('summary', {}, 'Characters option'),
+        h((Modernizr.details ? 'details' : 'fieldset'), { class: 'chars-option' }, [
+          h((Modernizr.details ? 'summary' : 'legend'), {}, 'Characters option'),
           h('p', {}, [
             h('label', { for: 'vowels-input' }, 'Vowels: '),
             h('input', {
