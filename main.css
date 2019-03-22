@@ -1,0 +1,23 @@
+h1 {
+  text-align: center;
+}
+
+.input-form {
+  text-align: center;
+}
+
+.input-form p {
+  margin: 0;
+}
+
+.input-form p + p {
+  margin-top: .1em;
+}
+
+.output {
+  background-color: #eee;
+  margin: .5em 0;
+  border: solid #222 1px;
+  font-size: 3em;
+  text-align: center;
+}
