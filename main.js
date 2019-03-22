@@ -66,8 +66,7 @@
   };
   var view = function(state, actions) {
     return h('div', {}, [
-      h('fieldset', { class: 'input-form' }, [
-        h('legend', {}, 'Use Chars'),
+      h('div', { class: 'input-form' }, [
         h('p', {}, [
           h('label', { for: 'vowels-input' }, 'Vowels: '),
           h('input', {
