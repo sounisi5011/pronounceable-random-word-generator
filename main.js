@@ -39,14 +39,16 @@
     setVowelsNode: function(element) {
       return {
         getVowelsCharsList: function() {
-          return uniqueChars(element.value);
+          var str = element.value;
+          return uniqueChars(1 <= str.length ? str : DEFAULT_VOWELS_CHARS);
         }
       };
     },
     setConsonantsNode: function(element) {
       return {
         getConsonantsCharsList: function() {
-          return uniqueChars(element.value);
+          var str = element.value;
+          return uniqueChars(1 <= str.length ? str : DEFAULT_CONSONANTS_CHARS);
         }
       };
     },
@@ -54,7 +56,12 @@
       return {
         getWordLength: function() {
           var length = Number(element.value);
-          return 1 <= length ? length : 1;
+
+          if (!isFinite(length)) {
+            return DEFAULT_WORD_LENGTH;
+          }
+
+          return Math.max(1, length);
         }
       };
     },
