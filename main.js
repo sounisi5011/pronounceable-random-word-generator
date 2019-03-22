@@ -31,22 +31,22 @@
     consonantsChars: DEFAULT_CONSONANTS_CHARS,
     wordLength: DEFAULT_WORD_LENGTH,
     word: '',
-    getVowelsChars: function() { return DEFAULT_VOWELS_CHARS; },
-    getConsonantsChars: function() { return DEFAULT_CONSONANTS_CHARS; },
+    getVowelsCharsList: function() { return uniqueChars(DEFAULT_VOWELS_CHARS); },
+    getConsonantsCharsList: function() { return uniqueChars(DEFAULT_CONSONANTS_CHARS); },
     getWordLength: function() { return DEFAULT_WORD_LENGTH; }
   };
   var actions = {
     setVowelsNode: function(element) {
       return {
-        getVowelsChars: function() {
-          return uniqueChars(element.value).join('');
+        getVowelsCharsList: function() {
+          return uniqueChars(element.value);
         }
       };
     },
     setConsonantsNode: function(element) {
       return {
-        getConsonantsChars: function() {
-          return uniqueChars(element.value).join('');
+        getConsonantsCharsList: function() {
+          return uniqueChars(element.value);
         }
       };
     },
@@ -60,20 +60,20 @@
     },
     generateWord: function() {
       return function(state) {
-        var vowelsChars = state.getVowelsChars();
-        var consonantsChars = state.getConsonantsChars();
+        var vowelsCharsList = state.getVowelsCharsList();
+        var consonantsCharsList = state.getConsonantsCharsList();
         var wordLength = state.getWordLength();
         var word = '';
-        var chars;
+        var charsList;
 
         for (var i = 0; i < wordLength; i++) {
-          chars = (i % 2 === 0) ? consonantsChars : vowelsChars;
-          word += chars[Math.floor(Math.random() * chars.length)];
+          charsList = (i % 2 === 0) ? consonantsCharsList : vowelsCharsList;
+          word += charsList[Math.floor(Math.random() * charsList.length)];
         }
 
         return {
-          vowelsChars: vowelsChars,
-          consonantsChars: consonantsChars,
+          vowelsChars: vowelsCharsList.join(''),
+          consonantsChars: consonantsCharsList.join(''),
           wordLength: wordLength,
           word: word
         };
