@@ -103,10 +103,9 @@
           })
         ])
       ]),
-      h('p', { class: 'output' }, state.word)
+      state.word !== '' ? h('p', { class: 'output' }, state.word) : null
     ]);
   };
 
-  var main = app(state, actions, view, document.getElementById('main'));
-  main.generateWord();
+  app(state, actions, view, document.getElementById('main'));
 })(Function('return this')());
